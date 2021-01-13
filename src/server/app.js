@@ -2,21 +2,17 @@ const express = require("express");
 const webpush = require("web-push");
 const bodyParser = require("body-parser");
 const path = require("path");
-
 const app = express();
+app.use(bodyParser.json())
 
-// Set static path
-app.use(express.static(path.join(__dirname, "client")));
-
-app.use(bodyParser.json());
 const publicKey = 'BGhx1o-G_jjVLjWmSxdlYjGRrCPq46pUclijaqn_Gch2cmDyAccUs-L9kCXOzJIp-YCisYKXzoUZqmd6HME3miE';
 const privateKey = 'nbydpGRdm38hJ5Cp5eETrHdr7LeAJaemX3rjrTp3gg8';
 
-webpush.setVapidDetails(
-  "mailto:abc@test.com",
-  publicKey,
-  privateKey
-);
+// webpush.setVapidDetails(
+//   "mailto:abc@test.com",
+//   publicKey,
+//   privateKey
+// );
 
 const sub = {};
 app.post("/", (req, res, next) => {
@@ -39,7 +35,6 @@ app.post("/", (req, res, next) => {
         return res.status(400).json({ error });
     }
 });
-
 
 const port = 3000;
 

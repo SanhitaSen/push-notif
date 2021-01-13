@@ -1,0 +1,10 @@
+<div class="container">
+  <form [formGroup] = "task" (ngSubmit)="onSubmit()">
+      <!-- {{task.value | json}} -->
+    <div style="display: flex; flex-direction: row;">
+      <input type="text" required placeholder="Add a to-do" class="form-control" [class.is-invalid] = "task.get('myTask').touched &&task.get('myTask').invalid" formControlName = "myTask" />
+      <button type="submit" class="btn btn-dark" [disabled] = "task.invalid" (click) = "pushSubscription()">Add</button>
+    </div>
+    <small [class.d-none] = "task.get('myTask').valid || task.get('myTask').untouched" class="text-danger">This field is required and can contain only alphabets and spaces.</small>
+  </form>
+</div>

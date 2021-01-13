@@ -18,7 +18,7 @@ const sub = {};
 app.post("/", (req, res, next) => {
     try {
         webpush.setVapidDetails('mailto:example@yourdomain.org', publicKey, privateKey);
-        const data = await Noties.find();
+        // const data = await Noties.find();
         console.log(data);
             const payload = {
                 notification: {
